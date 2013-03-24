@@ -41,7 +41,7 @@
 ## Default format is '%03d: '.
 ##
 
-require 'style/default/hikidoc'
+require 'hikidoc'
 
 class ::HikiDoc
 
