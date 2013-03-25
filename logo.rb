@@ -1,9 +1,9 @@
-# -*- coding: euc-jp -*-
+# -*- coding: utf-8 -*-
 
 def rubynokai
-  %q|<a href="http://jp.rubyist.net/"><img class="rubynokai" src="http://jp.rubyist.net/rubynokai01.png" alt="ÆüËÜ Ruby ¤Î²ñ" width="88" height="31"></a>|
+  %q|<a href="http://jp.rubyist.net/"><img class="rubynokai" src="http://jp.rubyist.net/rubynokai01.png" alt="æ—¥æœ¬ Ruby ã®ä¼š" width="88" height="31"></a>|
 end
 
 def rubima_logo
-  %q|<a href="./"><img class="rubima_logo" src="rubima_logo.png" alt="¤ë¤Ó¤Þ" width="135" height="82"></a>|
+  %q|<a href="./"><img class="rubima_logo" src="rubima_logo.png" alt="ã‚‹ã³ã¾" width="135" height="82"></a>|
 end
