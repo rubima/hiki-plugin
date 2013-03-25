@@ -5,5 +5,5 @@ def rubynokai
 end
 
 def rubima_logo
-  %q|<a href="./"><img class="rubima_logo" src="rubima_logo.png" alt="るびま" width="135" height="82"></a>|
+  %q|<a href="./"><img class="rubima_logo" src="theme/rubima/rubima_logo.png" alt="るびま" width="135" height="82"></a>|
 end
