@@ -2,7 +2,7 @@ add_header_proc do
   unless @user
     <<-HTML
     <style type="text/css"><!--
-    div.adminmenu {
+    span.adminmenu {
       display: none;
     }
     --></style>
