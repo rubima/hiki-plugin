@@ -11,7 +11,7 @@ def attach_html(file_name, start_no=1, page=@page)
     m = $~
     if m[1]     # Web::Template
       str = CGI::escapeHTML(m[0])
-      str.each {|x|
+      str.each_line {|x|
         s << "<span class=\"html_webtemplate\">" << x << "</span>"
         if x=~/\n\z/
           line += 1
@@ -20,7 +20,7 @@ def attach_html(file_name, start_no=1, page=@page)
       }
     elsif m[2]  # ERb
       str = CGI::escapeHTML(m[0])
-      str.each {|x|
+      str.each_line {|x|
         s << "<span class=\"html_erb\">" << x << "</span>"
         if x=~/\n\z/
           line += 1
@@ -29,7 +29,7 @@ def attach_html(file_name, start_no=1, page=@page)
       }
     elsif m[3]  # comment
       str = CGI::escapeHTML(m[0])
-      str.each {|x|
+      str.each_line {|x|
         s << "<span class=\"html_comment\">" << x << "</span>"
         if x=~/\n\z/
           line += 1
@@ -40,7 +40,7 @@ def attach_html(file_name, start_no=1, page=@page)
       str = CGI::escapeHTML(m[0])
       tag_m = str.match(/&lt;\/?([a-z0-9]+)/i)
       if tag_m[1]=~/^(?:html|head|body|p|h[1-6]|ul|ol|pre|dl|div|blockquote|form|hr|table)/i
-        str.each {|x|
+        str.each_line {|x|
           s << "<span class=\"html_tag_block\">" << x << "</span>"
           if x=~/\n\z/
             line += 1
@@ -48,7 +48,7 @@ def attach_html(file_name, start_no=1, page=@page)
           end
         }
       else
-        str.each {|x|
+        str.each_line {|x|
           s << "<span class=\"html_tag\">" << x << "</span>"
           if x=~/\n\z/
             line += 1
