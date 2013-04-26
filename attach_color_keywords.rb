@@ -48,7 +48,7 @@ def pre_color_keywords(string, colors = {}, options = {})
 		span_string = string.escapeHTML
 	end
 	
-	'<pre>' + span_string.gsub(/^\t+/){|t| tabstop * t.size}.to_euc + '</pre>'
+	'<pre>' + span_string.gsub(/^\t+/){|t| tabstop * t.size}.to_utf8 + '</pre>'
 end
 
 if __FILE__ == $0
@@ -61,8 +61,8 @@ if __FILE__ == $0
 			CGI::escapeHTML(self)
 		end
 
-		def to_euc
-			NKF::nkf('-m0 -e', self)
+		def to_utf8
+			NKF::nkf('-m0 -w', self)
 		end
 	end
 

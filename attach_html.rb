@@ -2,7 +2,7 @@ def attach_html(file_name, start_no=1, page=@page)
   tabstop = ' ' * (@options['attach.tabstop'] ? @options['attach.tabstop'].to_i : 2)
 
   file = "#{@cache_path}/attach/#{page.untaint.escape}/#{file_name.untaint.escape}"
-  code = File::readlines(file).join.gsub(/^\t+/) {|t| tabstop * t.size}.to_euc.sub(/\n\z/,'')
+  code = File::readlines(file).join.gsub(/^\t+/) {|t| tabstop * t.size}.to_utf8.sub(/\n\z/,'')
   s = ""
   s << %Q!<pre>!
   line = start_no !=- 1 ? start_no : 1

@@ -40,7 +40,7 @@ def attach_pre(filename, option_str='page=nil&amp;linenum=nil&amp;inline=false')
       s << "%03d| " % (n += 1) if linenum     # add line number
       s << line.gsub(/([^\t]{8})|([^\t]*)\t/n) { [$+].pack("A8") }  # expand tab
     end
-    s = s.escapeHTML.to_euc
+    s = s.escapeHTML.to_utf8
 
     # inline expantion
     if inline
