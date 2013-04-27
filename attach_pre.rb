@@ -31,7 +31,10 @@ def attach_pre(filename, option_str='page=nil&amp;linenum=nil&amp;inline=false')
 
     # read file content
     filepath = "#{@conf.cache_path}/attach/#{page.untaint.escape}/#{filename.untaint.escape}"
-    content = File.open(filepath) { |f| f.read() }
+    content = File.read(filepath)
+    if content.respond_to?(:force_encoding)
+      content.force_encoding(Encoding::ASCII_8BIT)
+    end
 
     # add line number, expand tab character, and escape HTML character
     s = ''
@@ -40,7 +43,7 @@ def attach_pre(filename, option_str='page=nil&amp;linenum=nil&amp;inline=false')
       s << "%03d| " % (n += 1) if linenum     # add line number
       s << line.gsub(/([^\t]{8})|([^\t]*)\t/n) { [$+].pack("A8") }  # expand tab
     end
-    s = s.escapeHTML.to_utf8
+    s = s.to_utf8.escapeHTML
 
     # inline expantion
     if inline
