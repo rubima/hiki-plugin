@@ -2,7 +2,7 @@
 # youtube.rb
 # 引数はYouTubeのURLに含まれるvパラメタの値
 # 例: {{youtube 'ApSBG0TntTU'}}
-# 例: {{youtube 'ApSBG0TntTU' 300 300}}
+# 例: {{youtube 'ApSBG0TntTU', 300, 300}}
 # referenced from sho-h http://sho.tdiary.net/20060708.html#p03 
 def youtube(video_id, width=560, height=315)
    <<-TAG
