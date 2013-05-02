@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 def attach_rb(file_name, start_no=1, page=@page)
   return '' if /\A\.\./ =~ file_name
   Dir::mkdir("#{@cache_path}/attach_rb/") unless File::directory?("#{@cache_path}/attach_rb/")
