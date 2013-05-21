@@ -39,8 +39,6 @@ def attach_rb(file_name, start_no=1, page=@page)
       case prev
       when RubyToken::TkNL
         s << "\n"
-      when RubyToken::TkSPACE
-        s << text
       else
         type = prev.class.to_s.sub("RubyToken::","")
         text = CGI::escapeHTML(text)
