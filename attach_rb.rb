@@ -15,7 +15,7 @@ def attach_rb(file_name, start_no=1, page=@page)
   tabstop = ' ' * (@options['attach.tabstop'] ? @options['attach.tabstop'].to_i : 2)
 
   code = File.read(file).to_utf8.gsub(/^\t+/) {|t| tabstop * t.size}
-  code << "\n" unless /\n\z/ =~ code
+  code.sub!(/\s*\z/, "\n")
   io = StringIO.new(code)
   chars = code.split(//)
   
