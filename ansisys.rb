@@ -746,6 +746,6 @@ if defined?(Hiki) and Hiki::Plugin == self.class
 
 		terminal = AnsiSys::Terminal.new
 		terminal.echo(data)
-		return terminal.render(:html, max_col, nil, colors, 'screen', styles, 'e') + "\n"
+		return terminal.render(:html, max_col, nil, colors, 'screen', styles, 'u') + "\n"
 	end
 end
