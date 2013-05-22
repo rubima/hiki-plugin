@@ -275,7 +275,7 @@ module AnsiSys
 		# true if all the attributes are same
 		def ==(other)
 			instance_variables.each do |ivar|
-				return false unless instance_eval(ivar) == other.instance_eval(ivar)
+				return false unless instance_variable_get(ivar) == other.instance_variable_get(ivar)
 			end
 			return true
 		end
