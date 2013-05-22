@@ -9,6 +9,9 @@ def social_buttons
       <!-- tweet button -->
       <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="">Tweet</a>
       <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+      <script type="text/javascript" src="https://d1xnn692s7u6t6.cloudfront.net/widget.js"></script>
+      <script type="text/javascript">(function k(){window.$SendToKindle&&window.$SendToKindle.Widget?$SendToKindle.Widget.init({}):setTimeout(k,500);})();</script>
+      <div class="kindleWidget" style="display:inline-block;padding:3px;cursor:pointer;font-size:11px;font-family:Arial;white-space:nowrap;line-height:1;border-radius:3px;border:#ccc thin solid;color:black;background:transparent url('https://d1xnn692s7u6t6.cloudfront.net/button-gradient.png') repeat-x;background-size:contain;"><img style="vertical-align:middle;margin:0;padding:0;border:none;" src="https://d1xnn692s7u6t6.cloudfront.net/white-15.png" /><span style="vertical-align:middle;margin-left:3px;">Send to Kindle</span></div>
     </div>
   _E
 end
