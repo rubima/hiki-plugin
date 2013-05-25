@@ -7,12 +7,13 @@
 # License:: GPL - GPL3 or later
 #
 require 'webrick'
+require 'nkf'
 
 module AnsiSys
 	module VERSION	#:nodoc:
 		MAJOR = 0
 		MINOR = 8
-		TINY = 3
+		TINY = 4
 
 		STRING = [MAJOR, MINOR, TINY].join('.')
 	end
@@ -128,7 +129,7 @@ module AnsiSys
 		private
 		# iterator on each character
 		def each_char(kcode, &block)
-			@string.scan(Regexp.new('.', nil, kcode)).each do |c|
+			@string.each_char do |c|
 				yield(c)
 			end
 		end
@@ -138,7 +139,7 @@ module AnsiSys
 			if WIDTHS.has_key?(char)
 				return WIDTHS[char]
 			end
-			case char.size	# expecting number of bytes
+			case char.bytesize
 			when 1
 				return 1
 			else
@@ -739,13 +740,13 @@ if defined?(Hiki) and Hiki::Plugin == self.class
 		unless File.exists?(path)
 			raise PluginError, "No such file:#{page_file_name}"
 		end
-		data = File.open(path){|f| f.read}.to_utf8
+		data = File.open(path){|f| f.read}.to_euc
 
 		colors = AnsiSys::Screen.default_css_colors(invert, bright)
 		styles = AnsiSys::CSSFormatter.hash_to_styles(AnsiSys::Screen.css_styles(colors, max_col, nil), '; ')
 
 		terminal = AnsiSys::Terminal.new
 		terminal.echo(data)
-		return terminal.render(:html, max_col, nil, colors, 'screen', styles, 'u') + "\n"
+		return terminal.render(:html, max_col, nil, colors, 'screen', styles, 'e') + "\n"
 	end
 end
