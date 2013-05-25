@@ -740,13 +740,13 @@ if defined?(Hiki) and Hiki::Plugin == self.class
 		unless File.exists?(path)
 			raise PluginError, "No such file:#{page_file_name}"
 		end
-		data = File.open(path){|f| f.read}.to_euc
+		data = File.open(path){|f| f.read}.to_utf8
 
 		colors = AnsiSys::Screen.default_css_colors(invert, bright)
 		styles = AnsiSys::CSSFormatter.hash_to_styles(AnsiSys::Screen.css_styles(colors, max_col, nil), '; ')
 
 		terminal = AnsiSys::Terminal.new
 		terminal.echo(data)
-		return terminal.render(:html, max_col, nil, colors, 'screen', styles, 'e') + "\n"
+		return terminal.render(:html, max_col, nil, colors, 'screen', styles, 'u') + "\n"
 	end
 end
