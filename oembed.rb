@@ -3,7 +3,7 @@
 # Copyright (C) 2013- sunaot <sunao.tanabe@gmail.com>
 # You can redistribute it and/or modify it under GPL2.
 #
-# This plugin is depend on jquery-oembed.
+# This plugin depends on jquery-oembed.
 #   - https://code.google.com/p/jquery-oembed/
 
 add_header_proc {
