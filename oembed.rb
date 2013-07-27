@@ -1,7 +1,7 @@
-# speakerdeck.rb: Embed speakerdeck slide on hiki pages.
+# oembed.rb: Embed oEmbed resources (slideshare, speakerdeck, youtube, etc) on hiki pages.
 #
 # Copyright (C) 2013- sunaot <sunao.tanabe@gmail.com>
-# You can redistribute it and/or modify it under GPL2.
+# You can redistribute it and/or modify it under MIT
 #
 # This plugin depends on jquery-oembed.
 #   - https://code.google.com/p/jquery-oembed/
