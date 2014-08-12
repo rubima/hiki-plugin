@@ -4,9 +4,9 @@ def indices(re)
   @db.pages.sort.each do |page|
     if re =~ page
       if page == @page
-        str << "<li><strong>#{page_name(page).escapeHTML}</strong>\n"
+        str << "<li><strong>#{h(page_name(page))}</strong>\n"
       else
-        str << "<li>#{hiki_anchor(page.escape, page_name(page))}\n"
+        str << "<li>#{hiki_anchor(escape(page), page_name(page))}\n"
       end
     end
   end
