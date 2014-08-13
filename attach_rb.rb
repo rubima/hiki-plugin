@@ -18,12 +18,12 @@ def attach_rb(file_name, start_no=1, page=@page)
   code.sub!(/\s*\z/, "\n")
   io = StringIO.new(code)
   chars = code.split(//)
-  
+
   s = ""
   scanner = RubyLex.new
   scanner.exception_on_syntax_error = false
   scanner.set_input(io)
-  
+
   s << %Q!<pre>!
   line = start_no !=- 1 ? start_no-1 : 0
   seek = 0

@@ -47,7 +47,7 @@ def pre_color_keywords(string, colors = {}, options = {})
 	else
 		span_string = string.escapeHTML
 	end
-	
+
 	'<pre>' + span_string.gsub(/^\t+/){|t| tabstop * t.size}.to_utf8 + '</pre>'
 end
 

@@ -734,7 +734,7 @@ if defined?(Hiki) and Hiki::Plugin == self.class
 	# _invert_ and _bright_ can be specified to change colors.
 	# _page_ can be specified to show a file attached to another page.
 	def ansi_screen(file_name, max_col = 80, invert = false, bright = true, page = @page)
-		return '' unless file_name =~ /\.(txt|rd|rb|c|pl|py|sh|java|html|htm|css|xml|xsl|sql|yaml)\z/i 
+		return '' unless file_name =~ /\.(txt|rd|rb|c|pl|py|sh|java|html|htm|css|xml|xsl|sql|yaml)\z/i
 		page_file_name = "#{page.untaint.escape}/#{file_name.untaint.escape}"
 		path = "#{@conf.cache_path}/attach/#{page_file_name}"
 		unless File.exists?(path)

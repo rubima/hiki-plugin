@@ -48,7 +48,7 @@ def attach_pre(filename, option_str='page=nil&amp;linenum=nil&amp;inline=false')
     # inline expantion
     if inline
       # '{{*...*}}' => '<strong>...</strong>'
-      s.gsub!(/\{\{\*/, '<strong>') 
+      s.gsub!(/\{\{\*/, '<strong>')
       s.gsub!(/\*\}\}/, '</strong>')
       # '{{/.../}}' => '<em>...</em>'
       s.gsub!(/\{\{\//, '<em>')
