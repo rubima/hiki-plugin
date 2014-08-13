@@ -2,10 +2,10 @@
 def attach_rb(file_name, start_no=1, page=@page)
   return '' if /\A\.\./ =~ file_name
   Dir::mkdir("#{@cache_path}/attach_rb/") unless File::directory?("#{@cache_path}/attach_rb/")
-  cachedir = "#{@cache_path}/attach_rb/#{page.untaint.escape}"
+  cachedir = "#{@cache_path}/attach_rb/#{escape(page.untaint)}"
   Dir::mkdir(cachedir) unless File::directory?(cachedir)
-  file = "#{@cache_path}/attach/#{page.untaint.escape}/#{file_name.untaint.escape}"
-  cache_file = "#{cachedir}/#{file_name.untaint.escape}"
+  file = "#{@cache_path}/attach/#{escape(page.untaint)}/#{escape(file_name.untaint)}"
+  cache_file = "#{cachedir}/#{escape(file_name.untaint)}"
   if test(?r, cache_file) and File::mtime(cache_file) > File::mtime(file)
     return File.read(cache_file)
   else
