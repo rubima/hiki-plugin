@@ -22,7 +22,7 @@
 
 def attach_color_keywords(file_name, keyword, color, page = @page)
 	return '' unless file_name =~ /\.(txt|rd|rb|c|pl|py|sh|java|html|htm|css|xml|xsl|sql|yaml)\z/i
-	page_file_name = "#{page.untaint.escape}/#{file_name.untaint.escape}"
+	page_file_name = "#{escape(page.untaint)}/#{escape(file_name.untaint)}"
 	path = "#{@conf.cache_path}/attach/#{page_file_name}"
 	unless File.exists?(path)
 		raise PluginError, "No such file:#{page_file_name}"
@@ -39,13 +39,13 @@ def pre_color_keywords(string, colors = {}, options = {})
 		remaining = string.gsub(/(.*?)(\b#{Regexp.union(*colors.keys)}\b)/m) do
 			prefix = $1
 			key = $2
-			span_string += prefix.escapeHTML
-			span_string += %Q|<span style="color:#{colors[key].escapeHTML}">#{key.escapeHTML}</span>|
+			span_string += escapeHTML(prefix)
+			span_string += %Q|<span style="color:#{escapeHTML(colors[key])}">#{escapeHTML(key)}</span>|
 			''
 		end
-		span_string += remaining.escapeHTML
+		span_string += escapeHTML(remaining)
 	else
-		span_string = string.escapeHTML
+		span_string = escapeHTML(string)
 	end
 
 	'<pre>' + span_string.gsub(/^\t+/){|t| tabstop * t.size}.to_utf8 + '</pre>'
@@ -56,11 +56,11 @@ if __FILE__ == $0
 	require 'cgi'
 	require 'nkf'
 
-	class String
-		def escapeHTML
-			CGI::escapeHTML(self)
-		end
+	def escapeHTML(string)
+		CGI::escapeHTML(string)
+	end
 
+	class String
 		def to_utf8
 			NKF::nkf('-m0 -w', self)
 		end

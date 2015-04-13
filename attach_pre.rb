@@ -30,7 +30,7 @@ def attach_pre(filename, option_str='page=nil&amp;linenum=nil&amp;inline=false')
   #if filename =~ /\.(txt|rd|rb|c|pl|py|sh|java|html|htm|css|xml|xsl|sql|yaml|rhtml|xhtml|php|eruby)\z/i
 
     # read file content
-    filepath = "#{@conf.cache_path}/attach/#{page.untaint.escape}/#{filename.untaint.escape}"
+    filepath = "#{@conf.cache_path}/attach/#{escape(page.untaint)}/#{escape(filename.untaint)}"
     content = File.read(filepath)
     if content.respond_to?(:force_encoding)
       content.force_encoding(Encoding::ASCII_8BIT)
@@ -43,7 +43,7 @@ def attach_pre(filename, option_str='page=nil&amp;linenum=nil&amp;inline=false')
       s << "%03d| " % (n += 1) if linenum     # add line number
       s << line.gsub(/([^\t]{8})|([^\t]*)\t/n) { [$+].pack("A8") }  # expand tab
     end
-    s = s.to_utf8.escapeHTML
+    s = escapeHTML(s.to_utf8)
 
     # inline expantion
     if inline

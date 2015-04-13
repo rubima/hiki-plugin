@@ -2,7 +2,7 @@
 def attach_html(file_name, start_no=1, page=@page)
   tabstop = ' ' * (@options['attach.tabstop'] ? @options['attach.tabstop'].to_i : 2)
 
-  file = "#{@cache_path}/attach/#{page.untaint.escape}/#{file_name.untaint.escape}"
+  file = "#{@cache_path}/attach/#{escape(page.untaint)}/#{escape(file_name.untaint)}"
   code = File.read(file).to_utf8.gsub(/^\t+/) {|t| tabstop * t.size}.sub(/\n\z/,'')
   s = ""
   s << %Q!<pre>!

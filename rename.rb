@@ -36,9 +36,9 @@ module Hiki
 <p>
   #{new_name_label}
   <input type="text" name="new_name" maxlength="50" size="30" value="">
-  <input type="hidden" name="p" value="#{@p.escapeHTML}">
+  <input type="hidden" name="p" value="#{escapeHTML(@p)}">
   <input type="hidden" name="c" value="rename">
-  <input type="submit" value="#{rename_label.escapeHTML}">
+  <input type="submit" value="#{escapeHTML(rename_label)}">
 </p>
 <p>
   <input type="checkbox" name="alias">#{alias_label}
@@ -60,9 +60,9 @@ module Hiki
 			rename_output(<<-EOS, rename_label)
 <dl>
 <dt>#{old_name_label}</dt>
-<dd>#{old_name.escapeHTML}</dd>
+<dd>#{escapeHTML(old_name)}</dd>
 <dt>#{new_name_label}</dt>
-<dd>#{@plugin.hiki_anchor(new_name.escape, @plugin.page_name(new_name))}</dd>
+<dd>#{@plugin.hiki_anchor(escape(new_name), @plugin.page_name(new_name))}</dd>
 </dl>
 			EOS
 		end
